@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: Zume Open Disciple Tools
+ * Plugin Name: Zume - Open Disciple Tools
  * Plugin URI: https://github.com/ZumeProject/zume-open-disciple-tools
  * Description: Zume Open Disciple Tools opens self registration to Zume Training users.
  * Text Domain: zume
@@ -89,7 +89,12 @@ class Zume_Open {
 
     private function __construct() {
 
+        require_once( 'frontpage/frontpage.php' );
 
+        // override DT styles
+        require_once( 'style-override/style-override.php' );
+
+        require_once( 'rest-api/rest-api.php' );
 
         add_action( 'after_setup_theme', array( $this, 'i18n' ), 51 ); // adds internationalize the text strings used.
     }
