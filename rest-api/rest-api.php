@@ -1,7 +1,7 @@
 <?php
 if ( !defined( 'ABSPATH' ) ) { exit; } // Exit if accessed directly.
 
-class DT_Plugin_Starter_Endpoints
+class Zume_Open_Endpoints
 {
     public $permissions = [ 'view_any_contacts', 'view_project_metrics' ];
 
@@ -28,9 +28,9 @@ class DT_Plugin_Starter_Endpoints
     }
 
 
-    //See https://github.com/DiscipleTools/disciple-tools-theme/wiki/Site-to-Site-Link for outside of wordpress authentication
+    //See https://github.com/ZumeProject/disciple-tools-theme/wiki/Site-to-Site-Link for outside of wordpress authentication
     public function add_api_routes() {
-        $namespace = 'dt_plugin_starter/v1';
+        $namespace = 'zume_open/v1';
 
         register_rest_route(
             $namespace, '/endpoint', [
@@ -53,4 +53,4 @@ class DT_Plugin_Starter_Endpoints
         return true;
     }
 }
-DT_Plugin_Starter_Endpoints::instance();
+Zume_Open_Endpoints::instance();
