@@ -17,8 +17,8 @@ class Zume_Open_Frontpage {
         $this->namespace = $this->context . "/v" . intval( $this->version );
         add_filter( 'dt_front_page', [ $this, 'front_page' ] );
 
-        add_filter( 'desktop_navbar_menu_options', [ $this, 'nav_menu' ] );
-        add_filter( 'off_canvas_menu_options', [ $this, 'nav_menu' ] );
+        add_filter( 'desktop_navbar_menu_options', [ $this, 'nav_menu_filter' ], 999, 1 );
+        add_filter( 'off_canvas_menu_options', [ $this, 'nav_menu_filter' ], 999, 1 );
 
         add_action( "template_redirect", [ $this, 'my_theme_redirect' ] );
 
@@ -34,16 +34,25 @@ class Zume_Open_Frontpage {
             include( $path );
             die();
         }
+        if ( strpos( $url, "course" ) !== false ){
+            $plugin_dir = dirname( __FILE__ );
+            $path = $plugin_dir . '/template-course.php';
+            include( $path );
+            die();
+        }
+        if ( strpos( $url, "progress" ) !== false ){
+            $plugin_dir = dirname( __FILE__ );
+            $path = $plugin_dir . '/template-progress.php';
+            include( $path );
+            die();
+        }
     }
 
     public function scripts() {
 
         wp_enqueue_style( 'dashboard-css', plugin_dir_url( __FILE__ ) . '/style.css', array(), filemtime( plugin_dir_path( __FILE__ ) . 'style.css' ) );
-/*
-        wp_register_script( 'amcharts-core', 'https://www.amcharts.com/lib/4/core.js', false, '4' );
-        wp_register_script( 'amcharts-charts', 'https://www.amcharts.com/lib/4/charts.js', false, '4' );
-        wp_register_script( 'amcharts-animated', 'https://www.amcharts.com/lib/4/themes/animated.js', false, '4' );
-        wp_enqueue_script( 'zume-open', plugin_dir_url( __FILE__ ) . '/dashboard.js', [
+
+        wp_enqueue_script( 'zume-open', plugin_dir_url( __FILE__ ) . '/frontpage.js', [
             'jquery',
             'jquery-ui',
             'lodash',
@@ -51,9 +60,9 @@ class Zume_Open_Frontpage {
             'amcharts-charts',
             'amcharts-animated',
             'moment'
-        ], filemtime( plugin_dir_path( __FILE__ ) . '/dashboard.js' ), true );
+        ], filemtime( plugin_dir_path( __FILE__ ) . '/frontpage.js' ), true );
         wp_localize_script(
-            'zume-open', 'wpApiDashboard', array(
+            'zume-open', 'wpApiFrontpage', array(
                 'root'                  => esc_url_raw( rest_url() ),
                 'site_url'              => get_site_url(),
                 'nonce'                 => wp_create_nonce( 'wp_rest' ),
@@ -62,11 +71,9 @@ class Zume_Open_Frontpage {
                 'template_dir'          => get_template_directory_uri(),
                 'translations'          => Zume_Open_Endpoints::instance()->translations(),
                 'data'                  => Zume_Open_Endpoints::instance()->get_data(),
-                'workload_status'       => get_user_option( 'workload_status', get_current_user_id() ),
-                'workload_status_options' => dt_get_site_custom_lists()["user_workload_status"] ?? []
             )
         );
-*/
+
     }
 
     public function logo(){
@@ -78,10 +85,32 @@ class Zume_Open_Frontpage {
         return site_url( '/dashboard/' );
     }
 
-    public function nav_menu(){
-        ?>
-        <li><a href="<?php echo esc_url( site_url( '/dashboard/' ) ); ?>"><?php esc_html_e( "Dashboard", "zume" ); ?></a></li>
-        <?php
+    public function nav_menu_filter( $tabs ) {
+
+        $new_tabs = [];
+        $new_tabs['dashboard'] = [
+            'link' => esc_url( site_url( '/dashboard/' ) ),
+            'label' => esc_html__( "Dashboard", "zume" ),
+        ];
+        $new_tabs['course'] = [
+            'link' => esc_url( site_url( '/course/' ) ),
+            'label' => esc_html__( "Course", "zume" ),
+        ];
+        $new_tabs['trainings'] = [
+            'link' => esc_url( site_url( '/trainings/' ) ),
+            'label' => esc_html__( "Trainings", "zume" ),
+        ];
+        $new_tabs['contacts'] = [
+            'link' => esc_url( site_url( '/contacts/' ) ),
+            'label' => esc_html__( "Contacts", "zume" ),
+        ];
+        $new_tabs['groups'] = [
+            'link' => esc_url( site_url( '/groups/' ) ),
+            'label' => esc_html__( "Groups", "zume" ),
+        ];
+
+        return $new_tabs;
     }
+
 }
 Zume_Open_Frontpage::instance();
