@@ -27,11 +27,6 @@ get_header();
                                 <div class="cell">
                                     <div class="bordered-box">
 
-<!--                                        <img src="--><?php //echo plugin_dir_url(__DIR__) ?><!--/images/screen-shot-group.png" /><br>-->
-<!--                                        <img src="--><?php //echo plugin_dir_url(__DIR__) ?><!--/images/screen-shot-group.png" /><br>-->
-
-
-                                        <br><br><br><br><br><br><br>
                                         <br><br><br><br><br><br><br>
                                         <br><br><br><br><br><br><br>
                                         <br><br><br><br><br><br><br>
@@ -45,7 +40,7 @@ get_header();
 
 
                         <!-- totals section -->
-                        <div class="cell" style="display:none;">
+                        <div class="cell" >
                             <div class="grid-x grid-padding-x">
                                 <div class="cell medium-4">
                                     <div class="bordered-box">
@@ -86,10 +81,7 @@ get_header();
                     </div>
                 </div> <!-- left section-->
                 <div class="cell medium-3" style="padding-top:.6em;">
-                    <div class="button-group">
-                        <button class="button">First Training Mode</button>
-                        <button class="button hollow">Movement Mode</button>
-                    </div>
+
                     <button class="button secondary-button expanded">Get a Coach</button>
 
                     <ul class="accordion" data-accordion data-multi-expand="true">
