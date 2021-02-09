@@ -1,32 +1,34 @@
 <?php
 
+/**
+ * Zúme style override
+ */
 add_action( 'wp_head', function(){
     ?>
     <style>
-        /* DT Overrides */
         body {
             background-color: white !important;
         }
         .top-bar a {
-            color: #323A68 !important;
+            color: #323A68;
         }
         .top-bar .active a {
-            color: white !important;
+            color: white;
         }
         .top-bar {
-            background-color: white !important;
+            background-color: white;
         }
         .top-bar-menu {
             border-bottom: 1px solid #323A68 !important;
         }
         .top-bar, .top-bar ul {
-            background-color: white !important;
+            background-color: white;
         }
         #top-bar-menu .dropdown.menu .image-menu-nav  {
-            background-color: white !important;
+            background-color: white ;
         }
         #top-bar-menu .dropdown.menu a  {
-            background-color: white !important;
+            /*background-color: white;*/
         }
         #top-bar-menu .has-submenu.center-items.is-dropdown-submenu-parent button img {
             background-color: #323A68;
@@ -36,16 +38,18 @@ add_action( 'wp_head', function(){
             background-color: #323A68;
             border-radius: 20px;
         }
-    </style>
-    <script>
-        jQuery(document).ready(function(){
 
-        })
-    </script>
+        #top-bar-menu .dropdown.menu li a {
+            background-color: white;
+        }
+        #top-bar-menu ul.dropdown.menu li.active a {
+            background-color: #323A68 ;
+        }
+        .menu ul {
+            list-style: none;
+            list-style-position: outside;
+            list-style-type: none;
+        }
+    </style>
     <?php
 }, 1000 );
-
-add_filter( 'dt_default_logo', function(){
-    $url = trailingslashit( plugin_dir_url(__FILE__) ) . 'zume-training-logo.svg';
-    return $url;
-} );

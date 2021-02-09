@@ -58,7 +58,7 @@ function zume_open() {
     if ( ! $is_rest ){
         return Zume_Open::instance();
     }
-    else if ( strpos( dt_get_url_path(), 'metrics' ) !== false || ( $is_rest && strpos( dt_get_url_path(), 'zume-open-metrics' ) !== false ) ){
+    else if ( strpos( dt_get_url_path(), 'metrics' ) !== false || ( $is_rest && strpos( dt_get_url_path(), 'zume-open' ) !== false ) ){
         return Zume_Open::instance();
     }
     else if ( strpos( dt_get_url_path(), 'zume_open_template' ) !== false ) {
@@ -92,6 +92,7 @@ class Zume_Open {
         require_once( 'frontpage/frontpage.php' );
 
         // override DT styles
+        require_once( 'style-override/navigation.php' );
         require_once( 'style-override/style-override.php' );
 
         require_once( 'rest-api/rest-api.php' );
