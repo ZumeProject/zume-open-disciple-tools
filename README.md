@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.com/ZumeProject/zume-training-for-disciple-tools.svg?branch=master)](https://travis-ci.com/ZumeProject/zume-training-for-disciple-tools)
 
-# Zume - Open Disciple Tools
+# Zúme Training - Disciple.Tools
 
 The plugin adds ability for Zume users to register and manage their Zume training
 on top of the Disciple Tools framework.

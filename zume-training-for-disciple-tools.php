@@ -1,8 +1,8 @@
 <?php
 /**
- * Plugin Name: Zúme Training for Disciple Tools
+ * Plugin Name: Zúme Training for Disciple.Tools
  * Plugin URI: https://github.com/ZumeProject/zume-training-for-disciple-tools
- * Description: Zúme Training for Disciple Tools opens self registration to Zume Training users and custom views.
+ * Description: Zúme Training for Disciple.Tools opens self registration to Zume Training users and custom views.
  * Text Domain: zume
  * Domain Path: /languages
  * Version:  1.4
