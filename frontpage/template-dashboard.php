@@ -26,6 +26,7 @@ get_header();
                             <div class="grid-x grid-padding-x">
                                 <div class="cell">
                                     <div class="bordered-box">
+                                        <a
 
                                         <br><br><br><br><br><br><br>
                                         <br><br><br><br><br><br><br>
@@ -116,12 +117,52 @@ get_header();
 
                     </ul>
 
+                    <a onclick="open_view_editor()" id="change-view">Change View</a>
+                    <script>
+                        // add listeners
+                        jQuery(document).ready(function(){
+
+                            // all view editor listener
+                            jQuery('#change-view').on('click', function(){
+                                open_view_editor()
+                            } )
+
+
+                        })
+
+                        function open_view_editor() {
+                            jQuery('#modal-large-title').html(`Change View`)
+                            jQuery('#modal-large-content').html(`
+                            <div class="grid-x">
+                                <div class="cell"><a id="first_training_view" class="button expanded hollow user_view" data-value="first">First Training View</a></div>
+                                <div class="cell"><a id="multi_training_view" class="button expanded hollow user_view" data-value="multi">Multi Training View</a></div>
+                                <div class="cell"><a id="movement_view" class="button expanded hollow user_view" data-value="movement">Movement View</a></div>
+                            </div>
+                            `)
+                            jQuery('#modal-large').foundation('open')
+
+                            jQuery('.user_view').on('click', function(e){
+                                console.log(e)
+                                console.log(e.currentTarget.dataset.value)
+                                window.clickResult = e
+
+                                makeRequest('POST', '/user_view', {'view': e.currentTarget.dataset.value}, 'zume-open/v1')
+                                .done(function(data){
+                                    console.log('return')
+                                    console.log(data)
+                                })
+                            })
+                        }
+                    </script>
+
                 </div> <!-- right section-->
             </div>
 
     </div> <!-- end #inner-content -->
 
 </div> <!-- end #content -->
+
+
 
 
 <?php

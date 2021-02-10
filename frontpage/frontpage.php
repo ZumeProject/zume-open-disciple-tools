@@ -46,30 +46,32 @@ class Zume_Open_Frontpage {
     }
 
     public function scripts() {
-        wp_enqueue_style( 'dashboard-css', plugin_dir_url( __FILE__ ) . '/style.css', array(), filemtime( plugin_dir_path( __FILE__ ) . 'style.css' ) );
+        $url = dt_get_url_path();
+        if ( strpos( $url, 'dashboard' ) !== false ) {
+            wp_enqueue_style( 'dashboard-css', plugin_dir_url( __FILE__ ) . '/style.css', array(), filemtime( plugin_dir_path( __FILE__ ) . 'style.css' ) );
 
-        wp_enqueue_script( 'zume-open', plugin_dir_url( __FILE__ ) . '/frontpage.js', [
-            'jquery',
-            'jquery-ui',
-            'lodash',
-            'amcharts-core',
-            'amcharts-charts',
-            'amcharts-animated',
-            'moment'
-        ], filemtime( plugin_dir_path( __FILE__ ) . '/frontpage.js' ), true );
-        wp_localize_script(
-            'zume-open', 'wpApiFrontpage', array(
-                'root'                  => esc_url_raw( rest_url() ),
-                'site_url'              => get_site_url(),
-                'nonce'                 => wp_create_nonce( 'wp_rest' ),
-                'current_user_login'    => wp_get_current_user()->user_login,
-                'current_user_id'       => get_current_user_id(),
-                'template_dir'          => get_template_directory_uri(),
-                'translations'          => [],
-                'data'                  => [],
-            )
-        );
-
+            wp_enqueue_script( 'zume-open', plugin_dir_url( __FILE__ ) . '/frontpage.js', [
+                'jquery',
+                'jquery-ui',
+                'lodash',
+                'amcharts-core',
+                'amcharts-charts',
+                'amcharts-animated',
+                'moment'
+            ], filemtime( plugin_dir_path( __FILE__ ) . '/frontpage.js' ), true );
+            wp_localize_script(
+                'zume-open', 'wpApiFrontpage', array(
+                    'root'                  => esc_url_raw( rest_url() ),
+                    'site_url'              => get_site_url(),
+                    'nonce'                 => wp_create_nonce( 'wp_rest' ),
+                    'current_user_login'    => wp_get_current_user()->user_login,
+                    'current_user_id'       => get_current_user_id(),
+                    'template_dir'          => get_template_directory_uri(),
+                    'translations'          => [],
+                    'data'                  => [],
+                )
+            );
+        }
     }
 
     public function front_page( $page ){
