@@ -1,7 +1,7 @@
 <?php
 if ( !defined( 'ABSPATH' ) ) { exit; } // Exit if accessed directly.
 
-class Zume_Open_Charts
+class Zume_Training_Charts
 {
     private static $_instance = null;
     public static function instance(){
@@ -14,7 +14,7 @@ class Zume_Open_Charts
     public function __construct(){
 
         require_once( 'one-page-chart-template.php' );
-        new Zume_Open_Chart_Template();
+        new Zume_Training_Chart_Template();
 
         /**
          * @todo add other charts like the pattern above here
@@ -22,4 +22,4 @@ class Zume_Open_Charts
 
     } // End __construct
 }
-Zume_Open_Charts::instance();
+Zume_Training_Charts::instance();

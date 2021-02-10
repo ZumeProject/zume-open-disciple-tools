@@ -1,6 +1,6 @@
 <?php
 
-class Zume_Open_Frontpage {
+class Zume_Training_Frontpage {
     private static $_instance = null;
     public static function instance() {
         if ( is_null( self::$_instance ) ) {
@@ -10,7 +10,7 @@ class Zume_Open_Frontpage {
     } // End instance()
 
     private $version = 1;
-    private $context = "zume-open";
+    private $context = "zume-training";
     private $namespace;
 
     public function __construct() {
@@ -50,7 +50,7 @@ class Zume_Open_Frontpage {
         if ( strpos( $url, 'dashboard' ) !== false ) {
             wp_enqueue_style( 'dashboard-css', plugin_dir_url( __FILE__ ) . '/style.css', array(), filemtime( plugin_dir_path( __FILE__ ) . 'style.css' ) );
 
-            wp_enqueue_script( 'zume-open', plugin_dir_url( __FILE__ ) . '/frontpage.js', [
+            wp_enqueue_script( 'zume-training', plugin_dir_url( __FILE__ ) . '/frontpage.js', [
                 'jquery',
                 'jquery-ui',
                 'lodash',
@@ -60,7 +60,7 @@ class Zume_Open_Frontpage {
                 'moment'
             ], filemtime( plugin_dir_path( __FILE__ ) . '/frontpage.js' ), true );
             wp_localize_script(
-                'zume-open', 'wpApiFrontpage', array(
+                'zume-training', 'wpApiFrontpage', array(
                     'root'                  => esc_url_raw( rest_url() ),
                     'site_url'              => get_site_url(),
                     'nonce'                 => wp_create_nonce( 'wp_rest' ),
@@ -78,4 +78,4 @@ class Zume_Open_Frontpage {
         return site_url( '/dashboard/' );
     }
 }
-Zume_Open_Frontpage::instance();
+Zume_Training_Frontpage::instance();

@@ -1,6 +1,6 @@
 <?php
 
-class Zume_Open_Navigation
+class Zume_Training_Navigation
 {
     private static $_instance = null;
     public static function instance()
@@ -78,4 +78,4 @@ class Zume_Open_Navigation
         return $tabs;
     }
 }
-Zume_Open_Navigation::instance();
+Zume_Training_Navigation::instance();

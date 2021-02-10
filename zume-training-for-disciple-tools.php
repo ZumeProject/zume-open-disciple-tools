@@ -1,13 +1,13 @@
 <?php
 /**
- * Plugin Name: Zume - Open Disciple Tools
- * Plugin URI: https://github.com/ZumeProject/zume-open-disciple-tools
- * Description: Zume Open Disciple Tools opens self registration to Zume Training users.
+ * Plugin Name: Zúme Training for Disciple Tools
+ * Plugin URI: https://github.com/ZumeProject/zume-training-for-disciple-tools
+ * Description: Zúme Training for Disciple Tools opens self registration to Zume Training users and custom views.
  * Text Domain: zume
  * Domain Path: /languages
  * Version:  1.4
  * Author URI: https://github.com/ZumeProject
- * GitHub Plugin URI: https://github.com/ZumeProject/zume-open-disciple-tools
+ * GitHub Plugin URI: https://github.com/ZumeProject/zume-training-for-disciple-tools
  * Requires at least: 4.7.0
  * (Requires 4.7+ because of the integration of the REST API at 4.7 and the security requirements of this milestone version.)
  * Tested up to: 5.6
@@ -23,14 +23,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Gets the instance of the `Zume_Open` class.
+ * Gets the instance of the `Zume_Training` class.
  *
  * @since  0.1
  * @access public
  * @return object|bool
  */
-function zume_open() {
-    $zume_open_required_dt_theme_version = '1.0';
+function zume_training() {
+    $zume_training_required_dt_theme_version = '1.0';
     $wp_theme = wp_get_theme();
     $version = $wp_theme->version;
 
@@ -38,7 +38,7 @@ function zume_open() {
      * Check if the Disciple.Tools theme is loaded and is the latest required version
      */
     $is_theme_dt = strpos( $wp_theme->get_template(), "disciple-tools-theme" ) !== false || $wp_theme->name === "Disciple Tools";
-    if ( $is_theme_dt && version_compare( $version, $zume_open_required_dt_theme_version, "<" ) ) {
+    if ( $is_theme_dt && version_compare( $version, $zume_training_required_dt_theme_version, "<" ) ) {
         return false;
     }
     if ( !$is_theme_dt ){
@@ -56,20 +56,20 @@ function zume_open() {
      */
     $is_rest = dt_is_rest();
     if ( ! $is_rest ){
-        return Zume_Open::instance();
+        return Zume_Training::instance();
     }
-    else if ( strpos( dt_get_url_path(), 'metrics' ) !== false || ( $is_rest && strpos( dt_get_url_path(), 'zume-open' ) !== false ) ){
-        return Zume_Open::instance();
+    else if ( strpos( dt_get_url_path(), 'metrics' ) !== false || ( $is_rest && strpos( dt_get_url_path(), 'zume-training' ) !== false ) ){
+        return Zume_Training::instance();
     }
-    else if ( strpos( dt_get_url_path(), 'zume_open_template' ) !== false ) {
-        return Zume_Open::instance();
+    else if ( strpos( dt_get_url_path(), 'zume_training_template' ) !== false ) {
+        return Zume_Training::instance();
     }
-    else if ( strpos( dt_get_url_path(), 'zume_open_post_type' ) !== false) {
-        return Zume_Open::instance();
+    else if ( strpos( dt_get_url_path(), 'zume_training_post_type' ) !== false) {
+        return Zume_Training::instance();
     }
     return false;
 }
-add_action( 'after_setup_theme', 'zume_open', 20 );
+add_action( 'after_setup_theme', 'zume_training', 20 );
 
 /**
  * Singleton class for setting up the plugin.
@@ -77,7 +77,7 @@ add_action( 'after_setup_theme', 'zume_open', 20 );
  * @since  0.1
  * @access public
  */
-class Zume_Open {
+class Zume_Training {
 
     private static $_instance = null;
     public static function instance() {
@@ -118,7 +118,7 @@ class Zume_Open {
      * @return void
      */
     public static function deactivation() {
-        delete_option( 'dismissed-zume-open' );
+        delete_option( 'dismissed-zume-training' );
     }
 
     /**
@@ -153,7 +153,7 @@ class Zume_Open {
      * @return string
      */
     public function __toString() {
-        return 'zume-open-disciple-tools';
+        return 'zume-training-for-disciple-tools';
     }
 
     /**
@@ -188,7 +188,7 @@ class Zume_Open {
      * @access public
      */
     public function __call( $method = '', $args = array() ) {
-        _doing_it_wrong( "zume_open::" . esc_html( $method ), 'Method does not exist.', '0.1' );
+        _doing_it_wrong( "zume_training::" . esc_html( $method ), 'Method does not exist.', '0.1' );
         unset( $method, $args );
         return null;
     }

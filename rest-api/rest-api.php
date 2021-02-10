@@ -1,7 +1,7 @@
 <?php
 if ( !defined( 'ABSPATH' ) ) { exit; } // Exit if accessed directly.
 
-class Zume_Open_Endpoints
+class Zume_Training_Endpoints
 {
     public $permissions = [ 'access_contacts' ];
 
@@ -19,7 +19,7 @@ class Zume_Open_Endpoints
 
     //See https://github.com/ZumeProject/disciple-tools-theme/wiki/Site-to-Site-Link for outside of wordpress authentication
     public function add_api_routes() {
-        $namespace_v1 = "zume-open/v1";
+        $namespace_v1 = "zume-training/v1";
 
         register_rest_route(
             $namespace_v1, '/user_view', [
@@ -42,4 +42,4 @@ class Zume_Open_Endpoints
         return false;
     }
 }
-Zume_Open_Endpoints::instance();
+Zume_Training_Endpoints::instance();

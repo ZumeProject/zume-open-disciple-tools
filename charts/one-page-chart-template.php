@@ -6,10 +6,10 @@ if ( !defined( 'ABSPATH' ) ) { exit; } // Exit if accessed directly.
  * @todo also rename in charts-loader.php
  */
 
-class Zume_Open_Chart_Template extends DT_Metrics_Chart_Base
+class Zume_Training_Chart_Template extends DT_Metrics_Chart_Base
 {
-    public $base_slug = 'zume-open-metrics'; // lowercase
-    public $base_title = "Zume Open Disciple Tools Metrics";
+    public $base_slug = 'zume-training-metrics'; // lowercase
+    public $base_title = "Zume Training Disciple Tools Metrics";
 
     public $title = 'Template';
     public $slug = 'template'; // lowercase

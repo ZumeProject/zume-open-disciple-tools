@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/ZumeProject/zume-open-disciple-tools.svg?branch=master)](https://travis-ci.com/ZumeProject/zume-open-disciple-tools)
+[![Build Status](https://travis-ci.com/ZumeProject/zume-training-for-disciple-tools.svg?branch=master)](https://travis-ci.com/ZumeProject/zume-training-for-disciple-tools)
 
 # Zume - Open Disciple Tools
 
@@ -24,8 +24,8 @@ process.
 ## Contribution
 
 Contributions welcome. You can report issues and bugs in the
-[Issues](https://github.com/ZumeProject/zume-open-disciple-tools/issues) section of the repo. You can present ideas
-in the [Discussions](https://github.com/ZumeProject/zume-open-disciple-tools/discussions) section of the repo. And
-code contributions are welcome using the [Pull Request](https://github.com/ZumeProject/zume-open-disciple-tools/pulls)
+[Issues](https://github.com/ZumeProject/zume-training-for-disciple-tools/issues) section of the repo. You can present ideas
+in the [Discussions](https://github.com/ZumeProject/zume-training-for-disciple-tools/discussions) section of the repo. And
+code contributions are welcome using the [Pull Request](https://github.com/ZumeProject/zume-training-for-disciple-tools/pulls)
 system for git. For a more details on contribution see the
-[contribution guidelines](https://github.com/ZumeProject/zume-open-disciple-tools/blob/master/CONTRIBUTING.md).
+[contribution guidelines](https://github.com/ZumeProject/zume-training-for-disciple-tools/blob/master/CONTRIBUTING.md).

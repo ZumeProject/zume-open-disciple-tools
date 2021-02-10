@@ -146,7 +146,7 @@ get_header();
                                 console.log(e.currentTarget.dataset.value)
                                 window.clickResult = e
 
-                                makeRequest('POST', '/user_view', {'view': e.currentTarget.dataset.value}, 'zume-open/v1')
+                                makeRequest('POST', '/user_view', {'view': e.currentTarget.dataset.value}, 'zume-training/v1')
                                 .done(function(data){
                                     console.log('return')
                                     console.log(data)

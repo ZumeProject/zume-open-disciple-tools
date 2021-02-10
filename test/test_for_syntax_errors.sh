@@ -3,7 +3,7 @@
 cd "$(dirname "${BASH_SOURCE[0]}")/../"
 
 if [ "$(php -r 'echo version_compare( phpversion(), "7.0", ">=" ) ? 1 : 0;')" != 1 ] ; then
-    php -l ../zume-open-disciple-tools.php
+    php -l ../zume-training-for-disciple-tools.php
     exit
 fi
 
