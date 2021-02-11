@@ -13,9 +13,9 @@ if ( ! current_user_can( 'access_contacts' ) ) {
 get_header();
 
 ?>
-    <div style="padding:15px" class="template-metrics-wide dashboard-page">
+<div style="padding:15px" class="template-metrics-wide dashboard-page">
 
-        <div id="inner-content">
+    <div id="inner-content">
 
             <div class="grid-x grid-padding-x">
                 <div class="cell medium-9">
@@ -27,11 +27,7 @@ get_header();
                                 <div class="cell">
                                     <div class="bordered-box">
 
-                                        <!--                                        <img src="--><?php //echo plugin_dir_url(__DIR__) ?><!--/images/screen-shot-group.png" /><br>-->
-                                        <!--                                        <img src="--><?php //echo plugin_dir_url(__DIR__) ?><!--/images/screen-shot-group.png" /><br>-->
 
-
-                                        <br><br><br><br><br><br><br>
                                         <br><br><br><br><br><br><br>
                                         <br><br><br><br><br><br><br>
                                         <br><br><br><br><br><br><br>
@@ -45,7 +41,7 @@ get_header();
 
 
                         <!-- totals section -->
-                        <div class="cell" style="display:none;">
+                        <div class="cell" >
                             <div class="grid-x grid-padding-x">
                                 <div class="cell medium-4">
                                     <div class="bordered-box">
@@ -87,11 +83,7 @@ get_header();
                 </div> <!-- left section-->
                 <div class="cell medium-3" style="padding-top:.6em;">
 
-                    <div style="display: flex">
-                        <div style="flex-grow: 1; overflow: hidden; white-space: nowrap; text-overflow: ellipsis">
-                            <button class="button secondary-button expanded">Get a Coach</button>
-                        </div>
-                    </div>
+                    <button class="button secondary-button expanded">Get a Coach</button>
 
                     <ul class="accordion" data-accordion data-multi-expand="true">
 
@@ -120,17 +112,16 @@ get_header();
                                 <a data-open="modal-large">Share a Concept on Facebook</a><br>
                             </div>
                         </li>
-
-
-
                     </ul>
 
                 </div> <!-- right section-->
             </div>
 
-        </div> <!-- end #inner-content -->
+    </div> <!-- end #inner-content -->
 
-    </div> <!-- end #content -->
+</div> <!-- end #content -->
+
+
 
 
 <?php

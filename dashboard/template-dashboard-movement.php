@@ -26,7 +26,7 @@ get_header();
                             <div class="grid-x grid-padding-x">
                                 <div class="cell">
                                     <div class="bordered-box">
-                                        <a
+
 
                                         <br><br><br><br><br><br><br>
                                         <br><br><br><br><br><br><br>
@@ -89,6 +89,24 @@ get_header();
 
                         <li class="accordion-item" style="border: 0;" data-accordion-item>
 
+                            <a href="#" class="accordion-title" style="text-decoration: none !important; border:0;padding:.5em;margin-bottom:0;"><h3 style="margin-bottom:0 !important;">Zúme Course</h3></a>
+
+                            <div class="accordion-content" style="border: 0;" data-tab-content>
+                                <a data-open="modal-large">Session 1</a><br>
+                                <a data-open="modal-large">Session 2</a><br>
+                                <a data-open="modal-large">Session 3</a><br>
+                                <a data-open="modal-large">Session 4</a><br>
+                                <a data-open="modal-large">Session 5</a><br>
+                                <a data-open="modal-large">Session 6</a><br>
+                                <a data-open="modal-large">Session 7</a><br>
+                                <a data-open="modal-large">Session 8</a><br>
+                                <a data-open="modal-large">Session 9</a><br>
+                                <a data-open="modal-large">Session 10</a><br>
+                            </div>
+                        </li>
+
+                        <li class="accordion-item" style="border: 0;" data-accordion-item>
+
                             <a href="#" class="accordion-title" style="text-decoration: none !important; border:0;padding:.5em;margin-bottom:0;"><h3 style="margin-bottom:0 !important;">Tools</h3></a>
 
                             <div class="accordion-content" style="border: 0;" data-tab-content>
@@ -112,48 +130,7 @@ get_header();
                                 <a data-open="modal-large">Share a Concept on Facebook</a><br>
                             </div>
                         </li>
-
-
-
                     </ul>
-
-                    <a onclick="open_view_editor()" id="change-view">Change View</a>
-                    <script>
-                        // add listeners
-                        jQuery(document).ready(function(){
-
-                            // all view editor listener
-                            jQuery('#change-view').on('click', function(){
-                                open_view_editor()
-                            } )
-
-
-                        })
-
-                        function open_view_editor() {
-                            jQuery('#modal-large-title').html(`Change View`)
-                            jQuery('#modal-large-content').html(`
-                            <div class="grid-x">
-                                <div class="cell"><a id="first_training_view" class="button expanded hollow user_view" data-value="first">First Training View</a></div>
-                                <div class="cell"><a id="multi_training_view" class="button expanded hollow user_view" data-value="multi">Multi Training View</a></div>
-                                <div class="cell"><a id="movement_view" class="button expanded hollow user_view" data-value="movement">Movement View</a></div>
-                            </div>
-                            `)
-                            jQuery('#modal-large').foundation('open')
-
-                            jQuery('.user_view').on('click', function(e){
-                                console.log(e)
-                                console.log(e.currentTarget.dataset.value)
-                                window.clickResult = e
-
-                                makeRequest('POST', '/user_view', {'view': e.currentTarget.dataset.value}, 'zume-training/v1')
-                                .done(function(data){
-                                    console.log('return')
-                                    console.log(data)
-                                })
-                            })
-                        }
-                    </script>
 
                 </div> <!-- right section-->
             </div>

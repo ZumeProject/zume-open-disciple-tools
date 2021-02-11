@@ -1,6 +1,7 @@
 <?php
 
-class Zume_Training_Frontpage {
+class Zume_Training_Dashboard {
+
     private static $_instance = null;
     public static function instance() {
         if ( is_null( self::$_instance ) ) {
@@ -9,17 +10,9 @@ class Zume_Training_Frontpage {
         return self::$_instance;
     } // End instance()
 
-    private $version = 1;
-    private $context = "zume-training";
-    private $namespace;
-
     public function __construct() {
-
-        $this->namespace = $this->context . "/v" . intval( $this->version );
         add_filter( 'dt_front_page', [ $this, 'front_page' ] );
-
         add_action( "template_redirect", [ $this, 'my_theme_redirect' ] );
-
         add_action( 'wp_enqueue_scripts', [ $this, 'scripts' ], 1000 );
     }
 
@@ -27,19 +20,19 @@ class Zume_Training_Frontpage {
         $url = dt_get_url_path();
         if ( strpos( $url, "dashboard" ) !== false ){
             $plugin_dir = dirname( __FILE__ );
-            $path = $plugin_dir . '/template-dashboard.php';
-            include( $path );
-            die();
-        }
-        if ( strpos( $url, "course" ) !== false ){
-            $plugin_dir = dirname( __FILE__ );
-            $path = $plugin_dir . '/template-course.php';
-            include( $path );
-            die();
-        }
-        if ( strpos( $url, "progress" ) !== false ){
-            $plugin_dir = dirname( __FILE__ );
-            $path = $plugin_dir . '/template-progress.php';
+
+            $user_view = get_user_option('custom_user_view' );
+
+            if ( 'first' === $user_view ) {
+                $path = $plugin_dir . '/template-dashboard-first.php';
+            }
+            else if ( 'multi' === $user_view ) {
+                $path = $plugin_dir . '/template-dashboard-multi.php';
+            }
+            else {
+                $path = $plugin_dir . '/template-dashboard-movement.php';
+            }
+
             include( $path );
             die();
         }
@@ -48,9 +41,9 @@ class Zume_Training_Frontpage {
     public function scripts() {
         $url = dt_get_url_path();
         if ( strpos( $url, 'dashboard' ) !== false ) {
-            wp_enqueue_style( 'dashboard-css', plugin_dir_url( __FILE__ ) . '/style.css', array(), filemtime( plugin_dir_path( __FILE__ ) . 'style.css' ) );
+            wp_enqueue_style( 'dashboard-css', plugin_dir_url( __FILE__ ) . '/dashboard.css', array(), filemtime( plugin_dir_path( __FILE__ ) . 'dashboard.css' ) );
 
-            wp_enqueue_script( 'zume-training', plugin_dir_url( __FILE__ ) . '/frontpage.js', [
+            wp_enqueue_script( 'zume-training-dashboard', plugin_dir_url( __FILE__ ) . '/dashboard.js', [
                 'jquery',
                 'jquery-ui',
                 'lodash',
@@ -58,9 +51,9 @@ class Zume_Training_Frontpage {
                 'amcharts-charts',
                 'amcharts-animated',
                 'moment'
-            ], filemtime( plugin_dir_path( __FILE__ ) . '/frontpage.js' ), true );
+            ], filemtime( plugin_dir_path( __FILE__ ) . '/dashboard.js' ), true );
             wp_localize_script(
-                'zume-training', 'wpApiFrontpage', array(
+                'zume-training-dashboard', 'wpApiFrontpage', array(
                     'root'                  => esc_url_raw( rest_url() ),
                     'site_url'              => get_site_url(),
                     'nonce'                 => wp_create_nonce( 'wp_rest' ),
@@ -78,4 +71,4 @@ class Zume_Training_Frontpage {
         return site_url( '/dashboard/' );
     }
 }
-Zume_Training_Frontpage::instance();
+Zume_Training_Dashboard::instance();

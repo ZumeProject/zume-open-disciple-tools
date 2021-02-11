@@ -45,6 +45,10 @@ add_action( 'wp_head', function(){
         #top-bar-menu ul.dropdown.menu li.active a {
             background-color: #323A68 ;
         }
+        #top-bar-menu ul.dropdown.menu li.active li.is-dropdown-submenu-item a {
+            background-color: white;
+            color: #323A68;
+        }
         .menu ul {
             list-style: none;
             list-style-position: outside;

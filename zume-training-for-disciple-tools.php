@@ -89,13 +89,14 @@ class Zume_Training {
 
     private function __construct() {
 
-        require_once( 'frontpage/frontpage.php' );
+        require_once( 'dashboard/dashboard.php' );
+        require_once( 'course/course.php' );
 
         // override DT styles
         require_once( 'style-override/navigation.php' );
         require_once( 'style-override/style-override.php' );
 
-        require_once( 'rest-api/rest-api.php' );
+        require_once( 'shared/rest-api.php');
 
         add_action( 'after_setup_theme', array( $this, 'i18n' ), 51 ); // adds internationalize the text strings used.
     }
