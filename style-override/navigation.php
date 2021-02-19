@@ -59,7 +59,7 @@ class Zume_Training_Navigation
                     'label' => esc_html__( "Home", "zume" ),
                 ],
                 'Course' => [
-                    'link' => esc_url( site_url( '/vision/' ) ),
+                    'link' => esc_url( site_url( '/course/' ) ),
                     'label' => esc_html__( "Course", "zume" ),
                 ],
                 'guidebook'=> [

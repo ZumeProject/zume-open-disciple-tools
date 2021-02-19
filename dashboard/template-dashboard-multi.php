@@ -32,6 +32,7 @@ get_header();
                                         <br><br><br><br><br><br><br>
                                         <br><br><br><br><br><br><br>
                                         <br><br><br><br><br><br><br>
+                                        <br><br><br><br><br><br><br>
 
 
                                     </div>
@@ -41,7 +42,7 @@ get_header();
 
 
                         <!-- totals section -->
-                        <div class="cell" >
+                        <div class="cell" style="display:none;">
                             <div class="grid-x grid-padding-x">
                                 <div class="cell medium-4">
                                     <div class="bordered-box">
