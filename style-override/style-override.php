@@ -21,6 +21,7 @@ add_action( 'wp_head', function(){
         .top-bar-menu {
             border-bottom: 1px solid #323A68 !important;
         }
+
         .top-bar, .top-bar ul {
             background-color: white;
         }
@@ -42,9 +43,7 @@ add_action( 'wp_head', function(){
         #top-bar-menu .dropdown.menu li a {
             background-color: white;
         }
-        #top-bar-menu ul.dropdown.menu li.active a {
-            background-color: #323A68 ;
-        }
+
         #top-bar-menu ul.dropdown.menu li.active li.is-dropdown-submenu-item a {
             background-color: white;
             color: #323A68;
@@ -53,6 +52,26 @@ add_action( 'wp_head', function(){
             list-style: none;
             list-style-position: outside;
             list-style-type: none;
+        }
+        #top-bar-menu a {
+            color: #323A68;
+        }
+        #top-bar-menu .is-dropdown-submenu-parent a {
+            color: white;
+        }
+        #top-bar-menu a:hover {
+            color: white;
+        }
+        #top-bar-menu .dropdown.menu li a {
+            color: #323A68;
+            background-color: white;
+        }
+        #top-bar-menu .dropdown.menu li a:hover {
+            color: white;
+            background-color:  #323A68;
+        }
+        #top-bar-menu div.top-bar-left .dropdown.menu li.active > a {
+            color:white;
         }
     </style>
     <?php

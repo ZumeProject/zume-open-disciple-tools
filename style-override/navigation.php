@@ -36,7 +36,7 @@ class Zume_Training_Navigation
             unset( $tabs['admin']['settings']['submenu']['help']);
 
         }
-        else if ( 'multi' === $user_view ) {
+        else if ( 'contacts' === $user_view ) {
 
             unset( $tabs['main']['metrics']);
 
@@ -45,33 +45,82 @@ class Zume_Training_Navigation
             unset( $tabs['admin']['settings']['submenu']['help']);
 
         }
-        else {
-        // movement view removes nothing
+        else if ( 'groups' === $user_view ) {
+
+            unset( $tabs['main']['metrics']);
+
+            unset( $tabs['admin']['notifications']);
+            unset( $tabs['admin']['add_new']);
+            unset( $tabs['admin']['settings']['submenu']['help']);
 
         }
+        else if ( 'trainings' === $user_view ) {
 
-        array_unshift( $tabs['main'], [
+            unset( $tabs['main']['metrics']);
+
+            unset( $tabs['admin']['notifications']);
+            unset( $tabs['admin']['add_new']);
+            unset( $tabs['admin']['settings']['submenu']['help']);
+
+        }
+        // full view removes nothing
+
+        array_unshift( $tabs['main'],
+        [
             'link' => esc_url( site_url( '/dashboard/' ) ),
             'label' => esc_html__( "Home", "zume" ),
             'submenu' => [
                 'home' => [
                     'link' => esc_url( site_url( '/dashboard/' ) ),
                     'label' => esc_html__( "Home", "zume" ),
+                    'icon' => '',
+                    'hidden' => false,
                 ],
                 'Course' => [
                     'link' => esc_url( site_url( '/course/' ) ),
                     'label' => esc_html__( "Course", "zume" ),
+                    'icon' => '',
+                    'hidden' => false,
                 ],
                 'guidebook'=> [
-                    'link' => esc_url( site_url( '/vision/' ) ),
+                    'link' => esc_url( site_url( '/resources/' ) ),
                     'label' => esc_html__( "Resources", "zume" ),
+                    'icon' => '',
+                    'hidden' => false,
                 ],
                 'coach'=> [
                     'link' => esc_url( site_url( '/get-a-coach/' ) ),
                     'label' => esc_html__( "Get a Coach", "zume" ),
+                    'icon' => '',
+                    'hidden' => false,
                 ],
             ]
-        ]);
+        ],
+            [
+            'link' => '#',
+            'label' => esc_html__( "Tools", "zume" ),
+            'submenu' => [
+                'contacts' => [
+                    'link' => esc_url( site_url( '/contacts/' ) ),
+                    'label' => esc_html__( "Contacts", "zume" ),
+                    'icon' => '',
+                    'hidden' => false,
+                ],
+                'groups' => [
+                    'link' => esc_url( site_url( '/groups/' ) ),
+                    'label' => esc_html__( "Groups", "zume" ),
+                    'icon' => '',
+                    'hidden' => false,
+                ],
+                'trainings'=> [
+                    'link' => esc_url( site_url( '/trainings/' ) ),
+                    'label' => esc_html__( "Trainings", "zume" ),
+                    'icon' => '',
+                    'hidden' => false,
+                ]
+            ]
+        ]
+        );
 
 
         return $tabs;
@@ -80,20 +129,25 @@ class Zume_Training_Navigation
     public function view_list() {
         $user_views = [
             [
-                'label' => 'First Training View',
+                'label' => 'First Training Focus',
                 'link' => '',
                 'value' => 'first'
             ],
             [
-                'label' => 'Multi Training View',
+                'label' => 'Evangelism Focus',
                 'link' => '',
                 'value' => 'multi'
             ],
             [
-                'label' => 'Movement View',
+                'label' => 'Group Growing Focus',
                 'link' => '',
                 'value' => 'movement'
             ],
+            [
+                'label' => 'Training Focus',
+                'link' => '',
+                'value' => 'training'
+            ]
         ];
         ?>
         <li>

@@ -26,12 +26,19 @@ class Zume_Training_Dashboard {
             if ( 'first' === $user_view ) {
                 $path = $plugin_dir . '/template-dashboard-first.php';
             }
-            else if ( 'multi' === $user_view ) {
-                $path = $plugin_dir . '/template-dashboard-multi.php';
+            else if ( 'contacts' === $user_view ) {
+                $path = $plugin_dir . '/template-dashboard-contacts.php';
             }
-            else {
-                $path = $plugin_dir . '/template-dashboard-movement.php';
+            else if ( 'groups' === $user_view ) {
+                $path = $plugin_dir . '/template-dashboard-groups.php';
             }
+            else if ( 'trainings' === $user_view ) {
+                $path = $plugin_dir . '/template-dashboard-trainings.php';
+            }
+            else  {
+                $path = $plugin_dir . '/template-dashboard-full.php';
+            }
+
 
             include( $path );
             die();
