@@ -73,6 +73,9 @@ add_action( 'wp_head', function(){
         #top-bar-menu div.top-bar-left .dropdown.menu li.active > a {
             color:white;
         }
+        #top-bar-menu .top-bar-left .dropdown.menu > li.is-dropdown-submenu-parent > a::after {
+            border-color: #323A68 transparent transparent;
+        }
     </style>
     <?php
 }, 1000 );

@@ -91,6 +91,10 @@ class Zume_Training {
 
         require_once( 'dashboard/dashboard.php' );
         require_once( 'course/course.php' );
+        require_once( 'course/zume-content.php' );
+        require_once( 'course/zume-course.php' );
+        require_once( 'course/zume-functions.php' );
+        require_once( 'course/zume-polylang-integration.php' );
 
         // override DT styles
         require_once( 'style-override/navigation.php' );

@@ -23,6 +23,11 @@ class Zume_Training_Navigation
 
         $user_view = get_user_option('custom_user_view' );
 
+        unset( $tabs['main']['contacts']);
+        unset( $tabs['main']['groups']);
+        unset( $tabs['main']['trainings']);
+        unset( $tabs['main']['metrics']);
+
         // first training view
         if ( 'first' === $user_view ) {
 
@@ -66,60 +71,100 @@ class Zume_Training_Navigation
         // full view removes nothing
 
         array_unshift( $tabs['main'],
-        [
-            'link' => esc_url( site_url( '/dashboard/' ) ),
-            'label' => esc_html__( "Home", "zume" ),
-            'submenu' => [
-                'home' => [
-                    'link' => esc_url( site_url( '/dashboard/' ) ),
-                    'label' => esc_html__( "Home", "zume" ),
-                    'icon' => '',
-                    'hidden' => false,
-                ],
-                'Course' => [
-                    'link' => esc_url( site_url( '/course/' ) ),
-                    'label' => esc_html__( "Course", "zume" ),
-                    'icon' => '',
-                    'hidden' => false,
-                ],
-                'guidebook'=> [
-                    'link' => esc_url( site_url( '/resources/' ) ),
-                    'label' => esc_html__( "Resources", "zume" ),
-                    'icon' => '',
-                    'hidden' => false,
-                ],
-                'coach'=> [
-                    'link' => esc_url( site_url( '/get-a-coach/' ) ),
-                    'label' => esc_html__( "Get a Coach", "zume" ),
-                    'icon' => '',
-                    'hidden' => false,
-                ],
-            ]
-        ],
             [
-            'link' => '#',
-            'label' => esc_html__( "Tools", "zume" ),
-            'submenu' => [
-                'contacts' => [
-                    'link' => esc_url( site_url( '/contacts/' ) ),
-                    'label' => esc_html__( "Contacts", "zume" ),
-                    'icon' => '',
-                    'hidden' => false,
-                ],
-                'groups' => [
-                    'link' => esc_url( site_url( '/groups/' ) ),
-                    'label' => esc_html__( "Groups", "zume" ),
-                    'icon' => '',
-                    'hidden' => false,
-                ],
-                'trainings'=> [
-                    'link' => esc_url( site_url( '/trainings/' ) ),
-                    'label' => esc_html__( "Trainings", "zume" ),
-                    'icon' => '',
-                    'hidden' => false,
+                'link' => esc_url( site_url('/course/') ),
+                'label' => esc_html__("Training", "zume"),
+                'submenu' => [
+                    'home' => [
+                        'link' => esc_url(site_url('/training/')),
+                        'label' => esc_html__("Training", "zume"),
+                        'icon' => '',
+                        'hidden' => false,
+                    ],
+                    'works' => [
+                        'link' => esc_url(site_url('/course/')),
+                        'label' => esc_html__("How it Works", "zume"),
+                        'icon' => '',
+                        'hidden' => false,
+                    ],
+                    'course' => [
+                        'link' => esc_url(site_url('/course/')),
+                        'label' => esc_html__("Download Guidebook", "zume"),
+                        'icon' => '',
+                        'hidden' => false,
+                    ],
+                    'zume_faq' => [
+                        'link' => esc_url(site_url('/zume-faq/')),
+                        'label' => esc_html__("FAQs", "zume"),
+                        'icon' => '',
+                        'hidden' => false,
+                    ],
+
+                ]
+            ],
+            [
+                'link' => esc_url(site_url('/dashboard/')),
+                'label' => esc_html__("Dashboard", "zume"),
+                'submenu' => [],
+                'hidden' => false,
+            ],
+
+            [
+                'link' => esc_url(site_url('/contacts/')),
+                'label' => esc_html__("My Zume", "zume"),
+                'hidden' => false,
+                'submenu' => [
+                    'contacts' => [
+                        'link' => esc_url(site_url('/contacts/')),
+                        'label' => esc_html__("Contacts", "zume"),
+                        'icon' => '',
+                        'hidden' => false,
+                    ],
+                    'groups' => [
+                        'link' => esc_url(site_url('/groups/')),
+                        'label' => esc_html__("Groups", "zume"),
+                        'icon' => '',
+                        'hidden' => false,
+                    ],
+                    'trainings' => [
+                        'link' => esc_url(site_url('/trainings/')),
+                        'label' => esc_html__("Trainings", "zume"),
+                        'icon' => '',
+                        'hidden' => false,
+                    ],
+                    'metrics' => [
+                        'link' => esc_url(site_url('/metrics/')),
+                        'label' => esc_html__("Metrics", "zume"),
+                        'icon' => '',
+                        'hidden' => false,
+                    ]
+                ]
+            ],
+            [
+                'link' => '#',
+                'label' => esc_html__("Community", "zume"),
+                'hidden' => false,
+                'submenu' => [
+                    'zume_vision' => [
+                        'link' => esc_url(site_url('/zume-vision/')),
+                        'label' => esc_html__("Vision", "zume"),
+                        'icon' => '',
+                        'hidden' => false,
+                    ],
+                    'contacts' => [
+                        'link' => esc_url(site_url('/zume-news/')),
+                        'label' => esc_html__("Stories", "zume"),
+                        'icon' => '',
+                        'hidden' => false,
+                    ],
+                    'groups' => [
+                        'link' => esc_url(site_url('/zume-map/')),
+                        'label' => esc_html__("Global Map", "zume"),
+                        'icon' => '',
+                        'hidden' => false,
+                    ],
                 ]
             ]
-        ]
         );
 
 
